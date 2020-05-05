@@ -5,10 +5,10 @@ import plotly.graph_objs as go
 
 ########### Define your variables
 countries=['India', 'China', 'USA', 'UK']
-Susceptible=[40, 60, 85, 75]
-Exposed=[40, 60, 85, 75]
-Infected=[20, 55, 80, 70]
-Recovered=[10, 20, 30, 40]
+susceptible=[40, 60, 85, 75]
+exposed=[40, 60, 85, 75]
+infected=[20, 55, 80, 70]
+recovered=[10, 20, 30, 40]
 color1='darkgreen'
 color2='lightblue'
 color3='red'
@@ -26,25 +26,25 @@ sourceurl='https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html#/bda7
 ########### Set up the chart
 susceptibility = go.Bar(
     x=countries,
-    y=Susceptible,
+    y=susceptible,
     name=label1,
     marker={'color':color1}
 )
 exposition = go.Bar(
     x=countries,
-    y=Exposed,
+    y=exposed,
     name=label2,
     marker={'color':color2}
 )
 infection = go.Bar(
     x=countries,
-    y=Infected,
+    y=infected,
     name=label3,
     marker={'color':color3}
 )
 recovery = go.Bar(
     x=countries,
-    y=Recovered,
+    y=recovered,
     name=label4,
     marker={'color':color4}
 )
