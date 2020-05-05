@@ -4,40 +4,59 @@ import dash_html_components as html
 import plotly.graph_objs as go
 
 ########### Define your variables
-beers=['Blood orange ale', 'Snake Dog IPA', 'Imperial Porter', 'Double Dog IPA']
-ibu_values=[40, 60, 85, 75]
-abv_values=[7.0, 7.1, 9.2, 4.3]
+countries=['India', 'China', 'USA', 'UK']
+Susceptible=[40, 60, 85, 75]
+Exposed=[40, 60, 85, 75]
+Infected=[20, 55, 80, 70]
+Recovered=[10, 20, 30, 40]
 color1='darkgreen'
 color2='lightblue'
-mytitle='Beer Comparison'
-tabtitle='beer!'
-myheading='Flying Dog Beers'
-label1='IBU'
-label2='ABV'
+color3='red'
+color4='blue
+mytitle='Covid Infections'
+tabtitle='COVID!'
+myheading='Covid 19 simulation'
+label1='Susceptible'
+label2='Exposed'
+label3='Infected'
+label4='Recovered'
 githublink='https://github.com/bibekiit/flying-dog-beers'
-sourceurl='https://www.flyingdog.com/beers/'
+sourceurl='https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6'
 
 ########### Set up the chart
-bitterness = go.Bar(
-    x=beers,
-    y=ibu_values,
+susceptibility = go.Bar(
+    x=countries,
+    y=Susceptible,
     name=label1,
     marker={'color':color1}
 )
-alcohol = go.Bar(
-    x=beers,
-    y=abv_values,
+exposition = go.Bar(
+    x=countries,
+    y=Exposed,
     name=label2,
     marker={'color':color2}
 )
+infection = go.Bar(
+    x=countries,
+    y=Infected,
+    name=label3,
+    marker={'color':color3}
+)
+recovery = go.Bar(
+    x=countries,
+    y=Recovered,
+    name=label4,
+    marker={'color':color4}
+)
 
-beer_data = [bitterness, alcohol]
-beer_layout = go.Layout(
+
+covid_data = [susceptibility,exposition, infection, recovery]
+covid_layout = go.Layout(
     barmode='group',
     title = mytitle
 )
 
-beer_fig = go.Figure(data=beer_data, layout=beer_layout)
+covid_fig = go.Figure(data=covid_data, layout=covid_layout)
 
 
 ########### Initiate the app
@@ -51,7 +70,7 @@ app.layout = html.Div(children=[
     html.H1(myheading),
     dcc.Graph(
         id='flyingdog',
-        figure=beer_fig
+        figure=covid_fig
     ),
     html.A('Code on Github', href=githublink),
     html.Br(),
